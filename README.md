@@ -23,8 +23,13 @@ This bridge provides a single, unified interface to generate and merge those hea
 git clone https://github.com/Freeky7819/rogue-auth-bridge.git
 cd rogue-auth-bridge
 python -m unittest
+```
 
-🧠 Usage Example
+---
+
+## 🧠 Usage Example
+
+```python
 from rogue.auth_protocol_bridge import build_auth_headers, merge_headers, AuthType
 
 # MCP example: Bearer token
@@ -37,11 +42,15 @@ hdrs = build_auth_headers(AuthType.A2A, {"passport": "<signed.jwt>"})
 
 # Merge with existing headers (auth takes precedence)
 final = merge_headers({"Accept": "application/json"}, hdrs)
+```
 
-🧩 Integration with Rogue Evaluator
+---
+
+## 🧩 Integration with Rogue Evaluator
 
 When the evaluator agent needs to call another authenticated agent:
 
+```python
 from rogue.auth_protocol_bridge import build_auth_headers, merge_headers, AuthType
 
 if config.auth_type == "mcp":
@@ -53,43 +62,53 @@ else:
 
 headers = merge_headers(request_headers, auth)
 response = requests.post(agent_url, headers=headers, json=payload)
+```
 
+> 💡 **Tip:** This layer can live inside `rogue/server/` or `rogue_sdk/utils/`.  
+> The TUI only needs to pass `auth_type` and `credentials` — the evaluator handles the rest.
 
-💡 Tip: This layer can live inside rogue/server/ or rogue_sdk/utils/.
-The TUI only needs to pass auth_type and credentials — the evaluator handles the rest.
+---
 
-🧪 Demo
+## 🧪 Demo
 
 Run the included demo to preview header generation:
 
+```bash
 python demo_auth_handshake.py
+```
 
-You’ll see sample output for both MCP and A2A modes, including equivalent curl commands.
+You’ll see sample output for both MCP and A2A modes, including equivalent `curl` commands.
 
-✅ Tests
+---
+
+## ✅ Tests
 
 Unit tests ensure correctness and backward compatibility:
+
+```bash
 python -m unittest
+```
 
-All test cases pass locally (AuthType, header merging, error handling).
+All test cases pass locally (`AuthType`, header merging, error handling).
 
-📜 License
+---
 
-Licensed under the Apache-2.0 License
+## 📜 License
+
+Licensed under the **Apache-2.0 License**  
 © 2025 [Freedom (Damjan Žakelj)]
 
-🤝 Acknowledgements
+---
 
-Developed as an interoperability layer for the Qualifire Rogue
- ecosystem.
+## 🤝 Acknowledgements
+
+Developed as an interoperability layer for the [Qualifire Rogue](https://github.com/qualifire-dev/rogue) ecosystem.  
 Compliant with:
+- MCP Basic/Auth specification  
+- A2A protocol authenticated endpoints  
+- Authy v4 / ISM-X passport framework
 
-MCP Basic/Auth specification
+---
 
-A2A protocol authenticated endpoints
-
-Authy v4 / ISM-X passport framework
-
-Maintainer: @Freeky7819
-
-Pull Requests and feedback are welcome 🚀
+> Maintainer: [@Freeky7819](https://github.com/Freeky7819)  
+> Pull Requests and feedback are welcome 🚀
