@@ -23,8 +23,9 @@ This bridge provides a single, unified interface to generate and merge those hea
 git clone https://github.com/Freeky7819/rogue-auth-bridge.git
 cd rogue-auth-bridge
 python -m unittest
+
 🧠 Usage Example
-python
+```python
 Copy code
 from rogue.auth_protocol_bridge import build_auth_headers, merge_headers, AuthType
 
@@ -41,7 +42,7 @@ final = merge_headers({"Accept": "application/json"}, hdrs)
 🧩 Integration with Rogue Evaluator
 When the evaluator agent needs to call another authenticated agent:
 
-python
+```python
 Copy code
 from rogue.auth_protocol_bridge import build_auth_headers, merge_headers, AuthType
 
