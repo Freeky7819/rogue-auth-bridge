@@ -24,13 +24,9 @@ This bridge unifies those cases under a single clean interface.
 
 ## ⚙️ Installation
 
-```powershell
-git clone https://github.com/Freeky7819/rogue-auth-bridge.git
-cd rogue-auth-bridge
-python -m unittest
-🧠 Usage Example
-python
-Copy code
+## 🧠 Usage Example
+
+```python
 from rogue.auth_protocol_bridge import build_auth_headers, merge_headers, AuthType
 
 # MCP: Bearer token
@@ -43,7 +39,7 @@ hdrs = build_auth_headers(AuthType.A2A, {"passport": "<signed.jwt>"})
 
 # Merge with existing headers (auth takes precedence)
 final = merge_headers({"Accept": "application/json"}, hdrs)
-🔄 Integration with Rogue Evaluator
+🧩 Integration with Rogue Evaluator
 When the evaluator agent calls another authenticated agent:
 
 python
@@ -59,8 +55,8 @@ else:
 
 headers = merge_headers(request_headers, auth)
 response = requests.post(agent_url, headers=headers, json=payload)
-➡️ This layer can live in rogue/server/ or rogue_sdk/utils/,
-so the TUI only passes auth_type + credentials, and the evaluator injects the correct headers automatically.
+💡 This layer can live in rogue/server/ or rogue_sdk/utils/,
+so the TUI just passes auth_type + credentials, and the evaluator injects the correct headers automatically.
 
 🧪 Demo
 Run the included demo to preview header generation:
