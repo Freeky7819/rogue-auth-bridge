@@ -1,4 +1,8 @@
-# 🧩 Rogue Auth Protocol Bridge
+# 🧩 Rogue Auth Protocol Bridge  
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![Status](https://img.shields.io/badge/status-stable-success)
 
 **Unified authentication headers for Rogue evaluator agents.**  
 This module enables agents to communicate securely with other MCP and A2A agents that require protocol-level authentication.
@@ -8,8 +12,7 @@ This module enables agents to communicate securely with other MCP and A2A agents
 ## 🌐 Overview
 
 Rogue supports multiple communication protocols (MCP, A2A).  
-Some remote agents require authorization headers — e.g. `Bearer` tokens or signed `x-agent-passport` credentials.
-
+Some remote agents require authorization headers — e.g. `Bearer` tokens or signed `x-agent-passport` credentials.  
 This bridge unifies those cases under a single clean interface.
 
 | Protocol | Header | Source |
@@ -21,7 +24,7 @@ This bridge unifies those cases under a single clean interface.
 
 ## ⚙️ Installation
 
-```bash
+```powershell
 git clone https://github.com/Freeky7819/rogue-auth-bridge.git
 cd rogue-auth-bridge
 python -m unittest
@@ -57,12 +60,12 @@ else:
 headers = merge_headers(request_headers, auth)
 response = requests.post(agent_url, headers=headers, json=payload)
 ➡️ This layer can live in rogue/server/ or rogue_sdk/utils/,
-so the TUI just passes auth_type + credentials, and the evaluator injects the correct headers automatically.
+so the TUI only passes auth_type + credentials, and the evaluator injects the correct headers automatically.
 
 🧪 Demo
 Run the included demo to preview header generation:
 
-bash
+powershell
 Copy code
 python demo_auth_handshake.py
 It prints both MCP and A2A header sets and their curl equivalents.
@@ -70,13 +73,12 @@ It prints both MCP and A2A header sets and their curl equivalents.
 ✅ Tests
 All functionality is covered by unittests:
 
-bash
+powershell
 Copy code
 python -m unittest
-
 📜 License
 Licensed under the Apache-2.0 license.
-Copyright © 2025 Damjan Žakelj
+© 2025 Damjan Žakelj
 
 🤝 Acknowledgements
 Built as an interoperability layer for the Qualifire Rogue ecosystem.
