@@ -96,7 +96,7 @@ All test cases pass locally (`AuthType`, header merging, error handling).
 ## 📜 License
 
 Licensed under the **Apache-2.0 License**  
-© 2025 [Freedom (Damjan Žakelj)]
+© 2025 [Damjan Žakelj]
 
 ---
 
